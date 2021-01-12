@@ -1,9 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 
-import Router from 'next/router';
+import wrraperRouterAcces from '../components/wrapperRouterAcces';
 
-export default function Home() {
+function Dashboard() {
   return (
     <div className={styles.container}>
       <Head>
@@ -12,9 +12,17 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        Home Page
-        <button onClick={() => Router.push('/dashboard')}>Ir para Dashboard</button>
+        Dashboard
       </main>
-    </div >
+    </div>
   )
 }
+
+Dashboard.getInitialProps = async props => {
+
+  console.info('You are authenticated!', props);
+
+  return {};
+}
+
+export default wrraperRouterAcces(Dashboard);
